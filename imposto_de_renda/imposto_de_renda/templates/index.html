@@ -1,20 +1,84 @@
 {% extends "base.html" %}
 {%block title%}Cálculo do Imposto de Renda - Primeira questão(prova1){%endblock%}
 {%block link%}templates/css/index.css{%endblock%}
+{%block style%}
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: Arial;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content{  
+  width: 300px;  
+  border: 1px solid black;  
+  padding: 5px;
+}
+.content form{
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+}
+.content h3{
+  text-align: center;
+}
+.content label{
+  font-weight: bold;
+  justify-self: right;
+  margin-bottom: 3px;
+}
+.content form input{
+  border: 2px solid black; 
+}
+
+.label, .input{
+  display: flex;
+  flex-direction: column;
+}
+.label{
+  align-items: end;
+  margin-right: 3px; 
+}
+.input{
+  justify-items: flex-end;
+  width: 100%;
+}
+.input input[type="text"], .input input[type="number"]{
+  margin-bottom: 3px;
+  color: blue;
+  font-weight: bold;
+}
+.input input:nth-child(2){
+  width: 100px;
+}
+.input input:nth-child(3){
+  width: 100px;
+}
+.input input[type="submit"]{
+  width: 70px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+{%endblock%}
 {%block body%}
   <div class="content">
-    <h1>Cálculo do Imposto de Renda</h1>
+    <h3>Cálculo do Imposto de Renda</h3>
     <form method="GET" action="">
-      <label for="name">{{form.name.label}}: </label>
-      {{form.name}}
-      <br>
-      <label for="annual_income">{{form.annual_income.label}}: </label>
-      {{form.annual_income}}
-      <br>
-      <label for="dependents">{{form.dependents.label}}: </label>
-      {{form.dependents}}
-      <br>
-      <input type="submit" value="Enviar"/>
+      <div class="label">
+        <label for="name">{{form.name.label}}: </label>
+        <label for="annual_income">{{form.annual_income.label}}: </label>
+        <label for="dependents">{{form.dependents.label}}: </label>
+      </div>
+      <div class="input">
+        {{form.name}}
+        {{form.annual_income}}
+        {{form.dependents}}
+        <input type="submit" value="Enviar"/>
+      </div>      
     </form>    
   </div>
 {%endblock%}

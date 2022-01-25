@@ -1,7 +1,11 @@
 <!DOCTYPE html5>
 {% block header %}
+<linkhref="{%block link%} {%endblock%}"/>
 <title>{% block title %}{% endblock %}</title>
-<link type="text/css" href="{%block link%} {%endblock%}"/>
+<style>
+    {%block style%}
+    {%endblock%}
+</style>
 {% endblock %} 
 {% block body %} 
 {% endblock %}
