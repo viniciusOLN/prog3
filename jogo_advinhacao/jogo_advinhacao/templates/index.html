@@ -1,4 +1,19 @@
 {%extends "base.html"%}
-{%block body%}
-oi
-{%endblock%}
+{% block body %}
+
+{% if fim %}
+    {{ fim }}
+{% else %}
+    <form method="post" action="{% url 'play_game' numero_sorteado chances %}" >
+        {% csrf_token %}
+        {{ form.as_p}}  
+
+        {% if msg %}
+            {{ msg }}
+        {% endif %}
+
+        <input type="submit" value="Enviar">
+
+    </form>
+{% endif %}    
+{% endblock %}

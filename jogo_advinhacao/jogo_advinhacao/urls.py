@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from jogo_advinhacao.views import index
+from jogo_advinhacao.views import play_game
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
+    path('play/<int:numero_sorteado>/<int:chances>', play_game, name="play_game"),
+    
 ]
