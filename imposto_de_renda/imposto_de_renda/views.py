@@ -2,17 +2,19 @@ from django.shortcuts import render
 from imposto_de_renda.forms import FormRenda
 
 def calc(data):
-    dependent = data['dependents'] * 2
-    ir = data['annual_income'] - (data['annual_income'] * dependent/100)    
+    dependent = data['dependents'] * 2     
+    if data['dependents'] > data['annual_income']:
+        return ('Erro! Números de dependentes maior do que a renda', 'Erro! Números de dependentes maior do que a renda')
+    ir = data['annual_income'] - (data['annual_income'] * dependent/100) 
 
     if ir >= 0 and ir < 2000:
         imp = '0,00'
     elif ir >= 2000 and ir < 5000:
-        imp = data['annual_income'] * 5/100
+        imp = ir * 5/100
     elif ir >= 5000 and ir < 10000:
-        imp = data['annual_income'] * 10/100
+        imp = ir * 10/100
     elif ir >= 10000:
-        imp = data['annual_income'] * 15/100
+        imp = ir * 15/100
     return (ir, imp)
         
 def index(request):
