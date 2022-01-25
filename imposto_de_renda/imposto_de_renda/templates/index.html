@@ -1,4 +1,20 @@
 {% extends "base.html" %}
+{%block title%}Cálculo do Imposto de Renda - Primeira questão(prova1){%endblock%}
+{%block link%}templates/css/index.css{%endblock%}
 {%block body%}
-<h1>Index</h1>
+  <div class="content">
+    <h1>Cálculo do Imposto de Renda</h1>
+    <form method="GET" action="">
+      <label for="name">{{form.name.label}}: </label>
+      {{form.name}}
+      <br>
+      <label for="annual_income">{{form.annual_income.label}}: </label>
+      {{form.annual_income}}
+      <br>
+      <label for="dependents">{{form.dependents.label}}: </label>
+      {{form.dependents}}
+      <br>
+      <input type="submit" value="Enviar"/>
+    </form>    
+  </div>
 {%endblock%}
