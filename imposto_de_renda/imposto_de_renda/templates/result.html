@@ -1,13 +1,21 @@
 {%extends "base.html"%}
 {%block style%}
 body{
-    font-family: Arial;
+    font-family: Arial;    
 }
 table, th, td {
     border: 1px solid black;
 }
+table,th,tr,td{
+    border-collapse: collapse;
+}
+table{
+    border: 1px solid #000;
+}
 th{
     text-align: center;
+    background-color: #1B75BC;
+    color: #fff;
 }
 tr:nth-child(odd) {
     background-color: #D6EEEE;
@@ -15,34 +23,53 @@ tr:nth-child(odd) {
 tr >td:nth-child(1){
     text-align: right;
     font-weight: bold;
+    padding: 0px 5px 0px 20px;
 }
 td{
     width: 50%;
+    padding-left: 5px;    
+}
+
+.table{
+    border: 1px solid #000;
+    padding: 2px;
+    width: 350px; 
+    margin: 0 auto;   
+}
+
+.table a{
+    display: block;
+    margin-top: 15px;
 }
 {%endblock%}
 {%block body%}
-  <table>
-     <caption>Cálculo do Imposto de Renda</caption>
-      <tr>
-          <td>Nome:</td>
-          <td>{{form.data.name}}</td>
+  <div class="table">
+    <table>
+        <tr>
+            <th colspan="2">Cálculo do Imposto de Renda</th>
+        </tr>
+        <tr>
+            <td>Nome:</td>
+            <td>{{form.data.name}}</td>
+        </tr>
+        <tr>
+          <td>Renda Atual:</td>
+          <td>R$ {{form.data.annual_income}}</td>
       </tr>
       <tr>
-        <td>Renda Atual:</td>
-        <td>R$ {{form.data.annual_income}}</td>
-    </tr>
-    <tr>
-        <td>Dependentes:</td>
-        <td>{{form.data.dependents}}</td>
-    </tr>
-    <tr>
-        <td>Renda Líquida</td>
-        <td>R$ {{imp.0}}</td>
-    </tr>
-    <tr>
-        <td>Imposto a recolher: </td>
-        <td>R$ {{imp.1}}</td>
-    </tr>
-    <tr><td><a href="/">Retornar</a></td></tr>
-  </table>
+          <td>Dependentes:</td>
+          <td>{{form.data.dependents}}</td>
+      </tr>
+      <tr>
+          <td>Renda Líquida</td>
+          <td>R$ {{imp.0}}</td>
+      </tr>
+      <tr>
+          <td>Imposto a recolher: </td>
+          <td>R$ {{imp.1}}</td>
+      </tr>
+      
+    </table>
+    <a href="/">Retornar</a>
+  </div>
 {%endblock%}
