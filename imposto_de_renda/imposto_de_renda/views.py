@@ -5,7 +5,7 @@ def calc(data):
     dependent = data['dependents'] * 2     
     if data['dependents'] > data['annual_income']:
         return ('Erro! Números de dependentes maior do que a renda', 'Erro! Números de dependentes maior do que a renda')
-    ir = data['annual_income'] - (data['annual_income'] * dependent/100) 
+    ir = data['annual_income'] - (data['annual_income'] * dependent/100)    
 
     if ir >= 0 and ir < 2000:
         imp = '0,00'
