@@ -37,3 +37,13 @@ def play_game(request, chances):
         'ganhar': ganhar,
     }
     return render(request, 'index.html', context=context)
+
+def index(request):    
+    form = FormGame()
+    chances = 5    
+    context = {
+        'form': form,           
+        'chances': chances
+    }
+
+    return render(request, 'index.html', context=context)
