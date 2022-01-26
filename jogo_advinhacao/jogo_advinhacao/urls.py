@@ -21,6 +21,6 @@ from jogo_advinhacao.views import play_game
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index),
-    path('play/<int:numero_sorteado>/<int:chances>', play_game, name="play_game"),
+    path('play/<int:chances>', play_game, name="play_game"),
     
 ]

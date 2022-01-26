@@ -1,4 +1,4 @@
 from django import forms
 
 class FormGame(forms.Form):
-    play = forms.IntegerField(label="jogada", max_value=100)
+    play = forms.IntegerField(max_value=100, widget=forms.TextInput(attrs={'placeholder': 'Jogada'}))
