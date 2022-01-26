@@ -2,45 +2,48 @@ from django.shortcuts import render
 from jogo_advinhacao.forms import FormGame
 import random
 
-def play_game(request,numero_sorteado, chances):
+def newNum():   
+    return int(random.sample([i for i in range(100)], 1)[0])
+
+NUM = int(newNum())
+
+def play_game(request, chances): 
+    print(NUM) 
     form = FormGame(request.POST)
     value = int(form['play'].value())
     fim = None
+    ganhar = None
+    msg = None
 
     if(chances == 0):
-        fim = "Que pena! acabaram as tentativas! você perdeu o jogo"
+        fim = "Que pena! Acabaram as tentativas! O número era: " + str(NUM)
     
-    if(value > numero_sorteado ):
-        msg = "menor que "+ str(value)
+    if(value > NUM ):
+        msg = "MENOR QUE "
         chances = chances - 1
-    elif (value < numero_sorteado):
-        msg = "maior que" + str(value)
+    elif (value < NUM ):
+        msg = "MAIOR QUE "
         chances = chances - 1
     else:
-        msg = "Parabens! voce ganhou"
+        ganhar = "Parabéns! Você ganhou!"
+
 
     context = {
-        'form': form,
-        'numero_sorteado': numero_sorteado,
+        'form': form,        
         'chances': chances,
         'msg': msg,
-        'fim': fim
+        'fim': fim,
+        'value': value,
+        'ganhar': ganhar,
     }
     return render(request, 'index.html', context=context)
 
-def index(request):
-    if request.method == "POST":
-        pass
-    else:
-        form = FormGame()
-        chances = 5
-        list_values = [i for i in range(100)]
-        numero_sorteado = random.sample(list_values, 1)
-        print(numero_sorteado, chances)
-        context = {
-            'form': form,
-            'numero_sorteado': numero_sorteado[0],
-            'chances': chances
-        }
+def index(request):    
+    form = FormGame()
+    chances = 5    
+    context = {
+        'form': form,           
+        'chances': chances
+    }
 
     return render(request, 'index.html', context=context)
