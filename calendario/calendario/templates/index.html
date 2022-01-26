@@ -1,36 +1,10 @@
 {%extends "base.html"%}
 {% block body %}
 
-<form method="post" >
+<form method="post" action=>
     {% csrf_token %}
     {{ form.as_p}}
     {% if value %}
-        
-        <table>
-            <thead>
-                <th scope="col">D</th>
-                <th scope="col">S</th>
-                <th scope="col">T</th>
-                <th scope="col">Q</th>
-                <th scope="col">Q</th>
-                <th scope="col">S</th>
-                <th scope="col">S</th>
-            </thead>
-            <tbody>
-                {% for item in value %}
-                <tr>
-                    {% for item2 in item %}
-                        {% if item2 == 0 %}
-                            <td></td>
-                        {% else %}
-                            <td> {{item2}} </td>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            
-            </tbody>
-        </table>
     {% endif %}
  
     <input type="submit" value="Enviar">
