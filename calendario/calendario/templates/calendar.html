@@ -1,0 +1,53 @@
+{%extends 'base.html'%}
+{%block style%}
+.content{
+    text-align: center;
+    width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+thead th{
+    text-align: left;
+}
+
+tbody tr td{
+    text-align: left;
+}
+
+.content a{
+    display: block;
+    margin: 10px;
+}
+{%endblock%}
+{%block body%}
+<div class="content">
+    <h3>{{ano_extenso}}/{{form.year.value}}</h3>
+<table>
+    <thead>
+        <th >D</th>
+        <th >S</th>
+        <th >T</th>
+        <th >Q</th>
+        <th >Q</th>
+        <th >S</th>
+        <th >S</th>
+    </thead>
+    <tbody>    
+        {% for item in value %}
+        <tr>
+            {% for item2 in item %}
+                {% if item2 == 0 %}
+                    <td></td>
+                {% else %}
+                    <td> {{item2}} </td>
+                {% endif %}
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    
+    </tbody>
+</table>
+<a href="/">Retornar</a>
+</div>
+{%endblock%}
