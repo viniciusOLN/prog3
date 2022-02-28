@@ -1,0 +1,11 @@
+{%extends "base.html"%}
+{%block title%}Populando banco de dados{%endblock%}
+{%block body%}
+    <form method="get" action="">
+       <p>{{form.quantCompany.label}}: {{form.quantCompany}}</p>
+       <p>{{form.quantProduct.label}}: {{form.quantProduct}}</p>
+       <p>{{form.quantProductGroup.label}}: {{form.quantProductGroup}}</p>
+       <p>{{form.resetData.label}} {{form.resetData}}</p>
+       <input type="submit" value="Enviar">
+    </form>
+{%endblock%}

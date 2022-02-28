@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{%block body%}
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{formProduct.name.label}}: {{formProduct.name}}</p>
+        <p>{{formProduct.unit.label}}: {{formProduct.unit}}</p>
+        <p>{{formProduct.price.label}}: {{formProduct.price}}</p>
+        <p>{{formProduct.product_group.label}}: {{formProduct.product_group}}</p>
+        <p>{{formProduct.active.label}}: {{formProduct.active}}</p>
+        <input type="submit" value="Editar">
+    </form>
+{%endblock%}

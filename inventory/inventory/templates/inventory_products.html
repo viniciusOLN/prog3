@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+{%block title%}Lista de Produtos{%endblock%}
+{%block style%}
+body{
+    font-family: Arial;
+}
+
+table{
+    width: 500px;
+    margin: 0 auto;
+}
+
+td:nth-child(1), td:nth-child(5){
+    text-align: center;
+}
+{%endblock%}
+{%block body%}
+<table>
+    <tr>
+        <th>Código</th>
+        <th>Produto</th>
+        <th>Unidade(s)</th>
+        <th>Preço</th>
+        <th>Editar Produto</th>
+    </tr>
+    {%for product in product_list%}
+        <tr>
+            <td style="padding: 5px;">{{product.id}}</td>
+            <td style="padding: 5px;">{{product.name}}</td>
+            <td style="padding: 5px;">{{product.unit}}</td>
+            <td style="padding: 5px;">R$ {{product.display_price_formated}}</td>
+            <td><a href="{{product.generate_url}}">Editar produto</a></td>
+        </tr>
+    {%endfor%}
+</table>
+{%endblock%}

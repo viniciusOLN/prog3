@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+{%block style%}
+body{
+    font-family: Arial;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error{
+    width: 500px;
+    background-color: #4F6DE6;
+    color: #fff;
+    border-radius: 6px;
+    padding: 20px 10px;
+    text-align:center;
+}
+
+.error a{
+    text-decoration: none;
+    color: #F5E94C;
+    font-weight: bold;
+    position: relative;
+}
+
+.error a:hover{
+    top: -2;   
+}
+{%endblock%}
+{%block body%}
+    <div class="error">
+        <h2>Error 404</h2>
+        <p>O produto que você pesquisou não existe ou não está disponível.</p>
+        <p><strong>Deseja ver quais produtos estão disponíveis?</strong></p>
+        <a href="{{url}}">Clique Aqui!</a>
+    </div>
+{%endblock%}
