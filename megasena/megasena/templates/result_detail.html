@@ -1,0 +1,58 @@
+{%extends "base.html"%}
+{%block style%}
+body{
+    font-family: Arial;  
+    text-align: center; 
+    margin: 20px 0px; 
+}
+h1{
+    color: green;
+}
+
+span{
+    color: #f5ef42;
+}
+
+.infos{
+    background-color: #42adf5;
+    color: #fff;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+.ball{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.balls{
+    margin: 30px;
+}
+
+.infos a{
+    color: #fff;
+}
+{%endblock%}
+{%block body%}
+<h1>Mega<span>Sena</span> - sorteios</h1>
+<div class="infos">
+    <h2>Concurso nº {{megasenamodel.contest}}</h2>
+    <p>Data: {{megasenamodel.date}}</p>
+    <p>Resultados da vez:</p>
+    <div class="balls">
+        <span class="ball">{%if megasenamodel.orb_1 < 10%}0{{megasenamodel.orb_1}}{%else%}{{megasenamodel.orb_1}}{%endif%}</span>
+        <span class="ball">{%if megasenamodel.orb_2 < 10%}0{{megasenamodel.orb_2}}{%else%}{{megasenamodel.orb_2}}{%endif%}</span>
+        <span class="ball">{%if megasenamodel.orb_3 < 10%}0{{megasenamodel.orb_3}}{%else%}{{megasenamodel.orb_3}}{%endif%}</span>
+        <span class="ball">{%if megasenamodel.orb_4 < 10%}0{{megasenamodel.orb_4}}{%else%}{{megasenamodel.orb_4}}{%endif%}</span>
+        <span class="ball">{%if megasenamodel.orb_5 < 10%}0{{megasenamodel.orb_5}}{%else%}{{megasenamodel.orb_5}}{%endif%}</span>
+        <span class="ball">{%if megasenamodel.orb_6 < 10%}0{{megasenamodel.orb_6}}{%else%}{{megasenamodel.orb_6}}{%endif%}</span>
+    </div>
+    <a href="/lottery/megasena">Voltar para a página inicial</a>
+</div>
+{%endblock%}

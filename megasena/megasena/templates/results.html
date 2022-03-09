@@ -1,0 +1,112 @@
+{%extends "base.html"%}
+{%block style%}
+body{
+    font-family: Arial;  
+    text-align: center; 
+    margin: 20px 0px; 
+}
+h2{
+    color: green;
+}
+
+span{
+    color: #f5ef42;
+}
+th{
+    text-align: center;
+    background-color: #1B75BC;
+}
+th a{
+    text-decoration: none;
+    color: #fff;
+    width: 10px;
+    font-size: 18px;
+}
+tr:nth-child(odd) {
+    background-color: #D6EEEE;
+}
+tr >td:nth-child(1){   
+    font-weight: bold;
+}
+
+table{    
+    padding: 2px;
+    width: 720px; 
+    margin: 10 auto;   
+}
+
+.pagination{
+    text-align: center;
+}
+
+a{
+    font-size: 13px;
+    margin-left: 10px;    
+}
+form{
+    width: 720px;
+    margin: 0 auto;
+}
+form input[type="number"]{
+    width: 80%;
+    height: 30px;
+}
+form button{
+    width: 19%;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid black;
+    cursor: Pointer;
+    font-weight: bold;
+}
+.page-current{
+    color: #000;
+}
+{%endblock%}
+{%block body%}
+<h2>MEGA<span>SENA</span></h2>
+<form method="POST" action="{% url 'contest' %}">
+    {% csrf_token %}
+    <input type="number" name="search" placeholder="Digite o número do Concurso que deseja procurar" required>
+    <button type="submit">Pesquisar</button>
+</form>
+<table>
+    <tr>
+        <th><a href="?sorted=contest">Concurso</a></th>
+        <th><a href="?sorted=date">Data</a></th>
+        <th><a href="?sorted=orb_1">Bola 1</a></th>
+        <th><a href="?sorted=orb_2">Bola 2</a></th>
+        <th><a href="?sorted=orb_3">Bola 3</a></th>
+        <th><a href="?sorted=orb_4">Bola 4</a></th>
+        <th><a href="?sorted=orb_5">Bola 5</a></th>
+        <th colspan="2"><a href="?sorted=orb_6">Bola 6</a></th>
+    </tr>
+    {%for item in result_list%}    
+        <tr>            
+            <td>{{item.contest}} <a href="{{item.get_absolute_url}}">(detalhes)</a></td>
+            <td>{{item.date}}</td>
+            <td>{{item.orb_1}}</td>
+            <td>{{item.orb_2}}</td>
+            <td>{{item.orb_3}}</td>
+            <td>{{item.orb_4}}</td>
+            <td>{{item.orb_5}}</td>
+            <td>{{item.orb_6}}</td>
+        </tr>    
+    {%endfor%}
+</table>
+<div class="pagination">
+    <span class="page-links">
+      {% if page_obj.has_previous %}
+      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">anterior</a>
+      {% endif %}
+      <span class="page-current">
+        Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+      </span>
+      {% if page_obj.has_next %}
+      <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">próxima</a>
+      {% endif %}
+    </span>
+  </div>   
+</div>
+
+{%endblock%}

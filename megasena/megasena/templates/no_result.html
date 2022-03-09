@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{%block style%}
+body{
+    margin-top: 100px;
+    font-family: Arial;
+}
+
+.content{
+    width: 500px;
+    color: #fff;
+    background-color: #42adf5;
+    margin: 0 auto;
+    padding: 50px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.content a{
+    color: #fff;
+}
+{%endblock%}
+{%block body%}
+<div class="content">
+    <p>O concurso de número: <strong>{{contest}}</strong> que você pesquisou não existe ou está indisponível.</p>
+    <a href="/lottery/megasena">Deseja verificar outros?</a>
+</div>
+{%endblock%}
